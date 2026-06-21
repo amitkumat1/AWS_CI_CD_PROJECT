@@ -92,6 +92,10 @@ jobs:
       - name: Pull latest images
         run: |
          docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+
+      - name: Free up disk space
+        run: |
+         docker system prune -af --volumes
          
       # - name: Stop and remove  container if running
       #   run: |
